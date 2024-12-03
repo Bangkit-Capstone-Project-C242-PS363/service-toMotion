@@ -1,0 +1,14 @@
+[project]
+name = "service-tomotion"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "flask-cors>=5.0.0",
+    "flask>=3.1.0",
+    "google-cloud-storage>=2.18.2",
+    "moviepy==1.0.3",
+    "opencv-python>=4.10.0.84",
+    "requests>=2.32.3",
+]

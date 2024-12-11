@@ -19,20 +19,11 @@ def getWords():
 
 
 def getLinkPhoto(data):
-    if data.isdigit():
-        return f"https://storage.googleapis.com/bucket-asl-data/material-quiz/numbers/{data}.jpeg"
-    else:
-        return f"https://storage.googleapis.com/bucket-asl-data/material-quiz/alphabets/{data}.jpeg"
+    return f"https://storage.googleapis.com/bucket-asl-data/tomotion/alphanumeric/{data}.jpeg"
 
 
 def getLinkVideo(data):
-    firstLetter = ord(data[0])
-    path = ""
-    if firstLetter % 2 == 0:
-        path = f"{chr(firstLetter - 1)}-{chr(firstLetter)}"
-    else:
-        path = f"{chr(firstLetter)}-{chr(firstLetter + 1)}"
-    return f"https://storage.googleapis.com/bucket-asl-data/material-quiz/{path.upper()}/{data}.mp4"
+    return f"https://storage.googleapis.com/bucket-asl-data/tomotion/words/{data}.mp4"
 
 
 def download_file(url, temp_dir):
@@ -127,6 +118,7 @@ def tomotion(data):
         else:
             for letter in dat:
                 links.append(getLinkPhoto(letter))
+    links.append("https://storage.googleapis.com/bucket-asl-data/tomotion/blank.jpg")
 
     output_path = f"output/{datetime.now().strftime('%Y%m%d%H%M%S')}"
     create_video_from_urls(links, output_path)
@@ -137,4 +129,3 @@ def tomotion(data):
     os.remove(f"{output_path}.mp4")
     link = f"https://storage.googleapis.com/bucket-tomotion/{output_path}.mp4"
     return link
-

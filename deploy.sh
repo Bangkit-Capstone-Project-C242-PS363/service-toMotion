@@ -7,7 +7,4 @@ podman push asia-southeast2-docker.pkg.dev/capstone-project-c242-ps363/backend/s
 gcloud run deploy signmaster-tomotion --image=asia-southeast2-docker.pkg.dev/capstone-project-c242-ps363/backend/signmaster-tomotion --platform=managed --region=asia-southeast2 --allow-unauthenticated --memory=2Gi --cpu=2
 
 # update nginx
-url=$(gcloud run services describe signmaster-tomotion --platform=managed --region=asia-southeast2 --format='value(status.url)')
-url=${url#https://}
-echo "setup $url to nginx"
-gcloud compute ssh nginx -- -p 22 "sudo sed 's/proxy_pass.*\/tomotion/proxy_pass https:\/\/$url\/tomotion/g' -i /etc/nginx/conf.d/signlang.conf; sudo nginx -t; sudo systemctl reload nginx"
+gcloud run services describe signmaster-tomotion --platform=managed --region=asia-southeast2 --format='value(status.url)'

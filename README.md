@@ -47,7 +47,4 @@ Converts input data to motion format.
 #### Notes
 
 - The endpoint expects JSON data in the request body
-- The `tomotion()` function processes the input data (implementation details not shown)
 - Returns a URL to the processed motion data
-
-Would you like me to elaborate on the expected data format or response structure?
